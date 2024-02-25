@@ -1,5 +1,6 @@
 package ejercicios
 
+import java.math.RoundingMode
 import java.util.UUID
 
 /*
@@ -32,14 +33,14 @@ abstract class Empleado(val nombre:String,private val ID:UUID = UUID.randomUUID(
 class EmpleadoPorHora(val nombreEmpleadoPorHora: String,private val horasAlMes:Int,private val tarifaPorHora: Double)
     :Empleado(nombreEmpleadoPorHora) {
     override fun calculaSalario(): Double {
-        return horasAlMes * tarifaPorHora
+        return (horasAlMes * tarifaPorHora).toBigDecimal().setScale(2,RoundingMode.HALF_UP).toDouble()
     }
 }
 
 class EmpleadoFijo(val nombreEmpleadoFijo:String, private val salarioFijo:Double, private val numPagas:Int)
     :Empleado(nombreEmpleadoFijo) {
     override fun calculaSalario(): Double {
-        val pagaProrrateada = salarioFijo / numPagas
+        val pagaProrrateada = (salarioFijo / numPagas).toBigDecimal().setScale(2,RoundingMode.HALF_UP).toDouble()
         return salarioFijo+pagaProrrateada
     }
 }
