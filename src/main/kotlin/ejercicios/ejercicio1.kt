@@ -49,7 +49,7 @@ class Triangulo(val lado1:Double,val lado2:Double,val lado3:Double,
 
     init {
         val comprobacionCoherencia = mutableListOf(lado1,lado2,lado3).any { it == base }
-        require(comprobacionCoherencia == true){"Uno de los lados tendrá que ser igual a la base del triángulo"}
+        require(comprobacionCoherencia == false){"Uno de los lados tendrá que ser igual a la base del triángulo"}
     }
     override fun area(): Double {
         return (base * altura)/2
@@ -58,6 +58,18 @@ class Triangulo(val lado1:Double,val lado2:Double,val lado3:Double,
     override fun perimetro(): Double {
         return lado1+lado2+lado3
     }
-
 }
 
+fun main(){
+    val triangulo = Triangulo(1.9,4.5,7.9,"rojo",7.0,6.0)
+    val rectangulo = Rectangulo(8.0,6.0,"verde")
+    val circulo = Circulo(33.0,15.0,"azul")
+    println(triangulo.area())
+    println(triangulo.perimetro())
+
+    println(rectangulo.area())
+    println(rectangulo.perimetro())
+
+    println(circulo.area())
+    println(circulo.perimetro())
+}
