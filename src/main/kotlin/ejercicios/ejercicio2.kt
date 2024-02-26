@@ -42,6 +42,7 @@ class EmpleadoFijo(val nombreEmpleadoFijo:String, private val salarioFijo:Double
     override fun calculaSalario(): Double {
         val pagaProrrateada = (salarioFijo / numPagas).toBigDecimal().setScale(2,RoundingMode.HALF_UP).toDouble()
         return salarioFijo+pagaProrrateada
+        //el toBigDecimal con el setScale es para redondear hasta 2 decimales
     }
 }
 
